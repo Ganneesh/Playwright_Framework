@@ -32,12 +32,15 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-        - name: Generate HTML report
-        run: npx playwright show-report --reporter=html
-
-      - name: Upload Playwright Report
+      - name: Upload HTML Report
         uses: actions/upload-artifact@v3
         with:
           name: playwright-report
           path: playwright-report/
 
+      - name: Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
