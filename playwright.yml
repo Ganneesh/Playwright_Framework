@@ -31,3 +31,13 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+
+        - name: Generate HTML report
+        run: npx playwright show-report --reporter=html
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report/
+
