@@ -35,6 +35,7 @@ jobs:
         run: allure generate allure-results --clean -o allure-report
 
       - name: Upload Allure HTML Report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: allure-report
