@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Automation Practice Site</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; }
@@ -11,14 +11,15 @@
     label { display: block; margin: 8px 0 4px; }
     input, select, textarea, button { padding: 8px; width: 300px; max-width: 100%; }
     .btn { margin-top: 10px; cursor: pointer; }
-    .box { width: 100px; height: 100px; background: #ddd; margin: 10px; display: inline-block; }
-    .draggable { background: #aaf; }
-    .droppable { background: #faa; }
-    .hidden { display: none; }
+    #drop-zone { width: 200px; height: 100px; border: 2px dashed #aaa; display: flex; align-items: center; justify-content: center; }
+    #drag-box { width: 100px; height: 50px; background-color: #4CAF50; color: white; text-align: center; line-height: 50px; cursor: move; }
+    #hover-box { width: 200px; height: 50px; background-color: #eee; text-align: center; line-height: 50px; }
   </style>
 </head>
 <body>
   <h1>Automation Practice Website</h1>
+
+  <!-- Existing Sections -->
 
   <div class="section">
     <h2>1. Login Form</h2>
@@ -88,46 +89,63 @@
     <button onclick="prompt('Enter your name:')">Show Prompt</button>
   </div>
 
+  <!-- NEW SECTIONS -->
+
   <div class="section">
     <h2>8. Date Picker</h2>
-    <label for="date">Pick a date</label>
-    <input type="date" id="date">
+    <input type="date">
   </div>
 
   <div class="section">
-    <h2>9. Text Area</h2>
-    <label for="comments">Enter your comments</label>
-    <textarea id="comments" rows="4"></textarea>
+    <h2>9. Links</h2>
+    <a href="https://www.google.com" target="_blank">Go to Google</a>
   </div>
 
   <div class="section">
-    <h2>10. Drag and Drop</h2>
-    <div id="drag1" class="box draggable" draggable="true" ondragstart="drag(event)">Drag me</div>
-    <div id="drop1" class="box droppable" ondrop="drop(event)" ondragover="allowDrop(event)">Drop here</div>
+    <h2>10. Iframe</h2>
+    <iframe src="https://example.com" width="300" height="200" title="Sample Iframe"></iframe>
   </div>
 
   <div class="section">
-    <h2>11. Pagination (Static)</h2>
-    <div id="pagination-content">
-      <p>Page 1 content</p>
-    </div>
-    <button onclick="showPage(1)">Page 1</button>
-    <button onclick="showPage(2)">Page 2</button>
-    <button onclick="showPage(3)">Page 3</button>
+    <h2>11. Multiple Tabs</h2>
+    <a href="https://openai.com" target="_blank">Open OpenAI in new tab</a>
   </div>
 
   <div class="section">
-    <h2>12. Dynamic Content</h2>
-    <button onclick="addDynamicContent()">Add Content</button>
-    <div id="dynamic-container"></div>
+    <h2>12. Drag and Drop</h2>
+    <div id="drag-box" draggable="true" ondragstart="drag(event)">Drag me</div>
+    <div id="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">Drop here</div>
   </div>
 
   <div class="section">
-    <h2>13. Mock API Response Button</h2>
-    <button onclick="simulateApiCall()">Fetch Data</button>
-    <pre id="api-result"></pre>
+    <h2>13. Mouse Hover</h2>
+    <div id="hover-box" onmouseover="this.style.background='yellow'" onmouseout="this.style.background='#eee'">Hover over me</div>
   </div>
 
+  <div class="section">
+    <h2>14. Auto Suggestions</h2>
+    <input list="browsers" name="browser" placeholder="Start typing a browser name...">
+    <datalist id="browsers">
+      <option value="Chrome">
+      <option value="Firefox">
+      <option value="Edge">
+      <option value="Safari">
+    </datalist>
+  </div>
+
+  <div class="section">
+    <h2>15. File Download</h2>
+    <a href="dummy.pdf" download>Download Sample PDF</a>
+  </div>
+
+  <div class="section">
+    <h2>16. Back, Forward, Refresh</h2>
+    <button onclick="history.back()">Back</button>
+    <button onclick="history.forward()">Forward</button>
+    <button onclick="location.reload()">Refresh</button>
+  </div>
+
+  <!-- Script for Modal and Drag/Drop -->
   <script>
     function showModal() {
       document.getElementById('modal').style.display = 'block';
@@ -135,7 +153,6 @@
     function hideModal() {
       document.getElementById('modal').style.display = 'none';
     }
-
     function allowDrop(ev) {
       ev.preventDefault();
     }
@@ -146,28 +163,6 @@
       ev.preventDefault();
       var data = ev.dataTransfer.getData("text");
       ev.target.appendChild(document.getElementById(data));
-    }
-
-    function showPage(page) {
-      const content = document.getElementById("pagination-content");
-      content.innerHTML = `<p>Page ${page} content</p>`;
-    }
-
-    function addDynamicContent() {
-      const div = document.createElement("div");
-      div.innerText = `Dynamic item ${Math.floor(Math.random() * 1000)}`;
-      document.getElementById("dynamic-container").appendChild(div);
-    }
-
-    function simulateApiCall() {
-      const result = {
-        status: "success",
-        data: [
-          { id: 1, name: "Item One" },
-          { id: 2, name: "Item Two" },
-        ]
-      };
-      document.getElementById("api-result").innerText = JSON.stringify(result, null, 2);
     }
   </script>
 </body>
