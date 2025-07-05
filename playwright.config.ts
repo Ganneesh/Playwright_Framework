@@ -13,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   globalSetup: require.resolve('./globalSetup'),
-globalTeardown: require.resolve('./globalTeardown'),
+ globalTeardown: require.resolve('./globalTeardown'),
 
   testDir: './tests',
   /* Run tests in files in parallel */
