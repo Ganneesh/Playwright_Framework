@@ -112,6 +112,35 @@
   </div>
 
   <!-- Section 10 – Iframe with nested fix -->
+   <div class="section">
+  <h2>10. Iframe Practice – Form & Nested Iframes</h2>
+
+  <p><strong>Scenario 1:</strong> Form inside an iframe</p>
+  <iframe id="basic-iframe" title="Basic IFrame" width="400" height="250"
+    srcdoc="<!DOCTYPE html><html><body><h3>IFrame Login</h3><input type='email' placeholder='Email'><input type='password' placeholder='Password'><button>Login</button></body></html>">
+  </iframe>
+
+  <p><strong>Scenario 2:</strong> Nested iframe (iframe inside another iframe)</p>
+  <iframe id="outer-iframe" title="Outer IFrame" width="450" height="300"
+    srcdoc='<!DOCTYPE html>
+      <html>
+      <body style="font-family:Arial,sans-serif; padding:10px;">
+        <h4>Outer Frame</h4>
+        <iframe width="95%" height="150"
+          srcdoc="&lt;!DOCTYPE html&gt;
+          &lt;html&gt;
+          &lt;body style=&quot;font-family:sans-serif; padding:10px;&quot;&gt;
+            &lt;h4&gt;Inner IFrame&lt;/h4&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Nested input&quot;&gt;
+            &lt;button&gt;Click Me&lt;/button&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;">
+        </iframe>
+      </body>
+      </html>'>
+  </iframe>
+</div>
+
   <div class="section">
     <h2>10. Iframe Practice – Form & Nested Iframes</h2>
 
