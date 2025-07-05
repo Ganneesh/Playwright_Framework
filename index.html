@@ -179,13 +179,27 @@
   </div>
 
   <div class="section">
-    <h2>16. Back, Forward, Refresh</h2>
-    <button onclick="history.back()">Back</button>
-    <button onclick="history.forward()">Forward</button>
-    <button onclick="location.reload()">Refresh</button>
+    <h2>16. Back, Forward, Refresh (SPA Simulation)</h2>
+
+    <div>
+      <button onclick="navigateTo('home')">Go to Home</button>
+      <button onclick="navigateTo('about')">Go to About</button>
+      <button onclick="navigateTo('contact')">Go to Contact</button>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button onclick="history.back()">⬅️ Back</button>
+      <button onclick="history.forward()">➡️ Forward</button>
+      <button onclick="location.reload()">🔄 Refresh</button>
+    </div>
+
+    <div id="page-content" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+      <h3>Welcome to Home Page</h3>
+      <p>This is a simulated single-page application. Try Back/Forward/Refresh.</p>
+    </div>
   </div>
 
-  <!-- Script for Modal and Drag/Drop -->
+  <!-- Script -->
   <script>
     function showModal() {
       document.getElementById('modal').style.display = 'block';
@@ -204,6 +218,29 @@
       var data = ev.dataTransfer.getData("text");
       ev.target.appendChild(document.getElementById(data));
     }
+
+    // Back/Forward SPA Simulation
+    const pages = {
+      home: "<h3>Welcome to Home Page</h3><p>This is a simulated single-page application. Try Back/Forward/Refresh.</p>",
+      about: "<h3>About Page</h3><p>This page is about iframe and test practice for QA automation.</p>",
+      contact: "<h3>Contact Page</h3><p>You can connect with Ganesh at ganneesh.github.io.</p>"
+    };
+
+    function navigateTo(page) {
+      const content = pages[page] || pages.home;
+      document.getElementById("page-content").innerHTML = content;
+      history.pushState({ page }, "", `#${page}`);
+    }
+
+    window.onpopstate = function (event) {
+      const page = event.state?.page || "home";
+      document.getElementById("page-content").innerHTML = pages[page];
+    };
+
+    window.onload = () => {
+      const hash = location.hash.replace("#", "") || "home";
+      navigateTo(hash);
+    };
   </script>
 </body>
 </html>
