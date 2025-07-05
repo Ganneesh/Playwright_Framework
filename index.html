@@ -14,6 +14,8 @@
     #drop-zone { width: 200px; height: 100px; border: 2px dashed #aaa; display: flex; align-items: center; justify-content: center; }
     #drag-box { width: 100px; height: 50px; background-color: #4CAF50; color: white; text-align: center; line-height: 50px; cursor: move; }
     #hover-box { width: 200px; height: 50px; background-color: #eee; text-align: center; line-height: 50px; }
+    table { border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #888; padding: 8px; }
   </style>
 </head>
 <body>
@@ -69,7 +71,9 @@
 
   <div class="section">
     <h2>6. Table for Validation</h2>
-    <table border="1" cellpadding="10">
+
+    <h4>Static Table</h4>
+    <table>
       <thead>
         <tr><th>ID</th><th>Name</th><th>Status</th></tr>
       </thead>
@@ -78,6 +82,10 @@
         <tr><td>2</td><td>Bob</td><td>Inactive</td></tr>
       </tbody>
     </table>
+
+    <h4 style="margin-top: 20px;">Dynamic Table (Loaded via Button)</h4>
+    <button onclick="renderDynamicTable()">Load Dynamic Table</button>
+    <div id="dynamic-table-container"></div>
   </div>
 
   <div class="section">
@@ -217,6 +225,22 @@
       ev.preventDefault();
       var data = ev.dataTransfer.getData("text");
       ev.target.appendChild(document.getElementById(data));
+    }
+
+    function renderDynamicTable() {
+      const data = [
+        { id: 101, name: 'Charlie', status: 'Active' },
+        { id: 102, name: 'Dana', status: 'Inactive' },
+        { id: 103, name: 'Eve', status: 'Pending' }
+      ];
+
+      let tableHTML = '<table><thead><tr><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>';
+      data.forEach(row => {
+        tableHTML += `<tr><td>${row.id}</td><td>${row.name}</td><td>${row.status}</td></tr>`;
+      });
+      tableHTML += '</tbody></table>';
+
+      document.getElementById('dynamic-table-container').innerHTML = tableHTML;
     }
 
     // Back/Forward SPA Simulation
