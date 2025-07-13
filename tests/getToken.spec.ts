@@ -1,7 +1,11 @@
 import { test, expect, request } from '@playwright/test';
-import { getSavedToken } from '../utils/authHelper';
+import { getSavedToken } from '../support/utils/authHelper.ts'
 
-test('Get users with saved token', async () => {
+
+
+test.describe('Demo Test cases',()=>{
+
+    test('Get users with saved token', async () => {
   const token = getSavedToken();
 
   const context = await request.newContext({
@@ -14,3 +18,7 @@ test('Get users with saved token', async () => {
   const response = await context.get('/api/users');
   expect(response.ok()).toBeTruthy();
 });
+
+})
+
+
