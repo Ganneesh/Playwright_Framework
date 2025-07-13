@@ -22,15 +22,15 @@
   <!-- Sections 1–5 -->
  <!-- ✅ FIXED LOGIN FORM -->
   <div class="section">
-    <h2>1. Login Form</h2>
-    <form onsubmit="alert('Login clicked'); return false;">
-      <label for="username">Username</label>
-      <input type="text" id="username" />
-      <label for="password">Password</label>
-      <input type="password" id="password" />
-      <button type="submit" class="btn">Login</button>
-    </form>
-  </div>
+  <h2>1. Login Form</h2>
+  <form onsubmit="alert('Login clicked'); return false;">
+    <label for="username">Username</label>
+    <input type="text" id="username" autocomplete="username" />
+    <label for="password">Password</label>
+    <input type="password" id="password" autocomplete="current-password" />
+    <button type="submit" class="btn">Login</button>
+  </form>
+</div>
 
   <div class="section">
     <h2>2. Dropdown and Multi-select</h2>
