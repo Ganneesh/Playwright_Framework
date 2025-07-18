@@ -1,0 +1,48 @@
+{
+  "baseUrl": "https://api-automation-web.onrender.com",
+
+  "auth": {
+    "login": {
+      "method": "POST",
+      "path": "/api/login"
+    },
+    "logout": {
+      "method": "POST",
+      "path": "/api/logout"
+    }
+  },
+
+  "users": {
+    "list": {
+      "method": "GET",
+      "path": "/api/users"
+    },
+    "getUser": {
+      "method": "GET",
+      "path": "/api/users/{id}"
+    },
+    "create": {
+      "method": "POST",
+      "path": "/api/users"
+    },
+    "update": {
+      "method": "PUT",
+      "path": "/api/users/{id}"
+    },
+    "delete": {
+      "method": "DELETE",
+      "path": "/api/users/{id}"
+    }
+  },
+
+  "products": {
+    "list": {
+      "method": "GET",
+      "path": "/api/products"
+    },
+    "details": {
+      "method": "GET",
+      "path": "/api/products/{id}"
+    }
+  }
+}

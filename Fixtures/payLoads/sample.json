@@ -1,0 +1,33 @@
+{
+  "login": {
+    "valid": {
+      "username": "admin",
+      "password": "admin123"
+    },
+    "invalid": {
+      "username": "wrongUser",
+      "password": "wrongPass"
+    }
+  },
+
+  "createUser": {
+    "valid": {
+      "username": "ganesh123",
+      "email": "ganesh@example.com",
+      "password": "Ganesh@123",
+      "role": "tester"
+    },
+    "missingUsername": {
+      "email": "test@example.com",
+      "password": "pass123",
+      "role": "tester"
+    }
+  },
+
+  "updateUser": {
+    "valid": {
+      "email": "updated@example.com",
+      "role": "admin"
+    }
+  }
+}
