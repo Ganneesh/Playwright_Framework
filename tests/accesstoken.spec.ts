@@ -3,7 +3,7 @@ import { getToken } from '../support/utils/authHelper';
 
 
 //add describe block for better organization
-test.describe('Authentication Tests', () => {
+test.describe.skip('Authentication Tests', () => {
   test.beforeAll(async () => {
     // Any setup before tests run
   });

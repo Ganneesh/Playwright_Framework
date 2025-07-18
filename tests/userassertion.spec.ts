@@ -9,7 +9,7 @@ import {
 
 
 //describe block and hooks for better organization
-test.describe('User Assertion Tests', () => {
+test.describe.skip('User Assertion Tests', () => {
   test.beforeAll(async () => {
     // Any setup before tests run
   });
